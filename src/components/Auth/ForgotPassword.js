@@ -37,11 +37,13 @@ const ForgotPassword = () => {
 
       const formData = new URLSearchParams();
       formData.append("email", email);
-      await api.post("/auth/public/forgot-password", formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.post("/auth/public/forgot-password", formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
 
       //reset the field by using reset() function provided by react hook form after submit
       reset();

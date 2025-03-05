@@ -33,11 +33,13 @@ const NoteDetails = () => {
   const fetchNoteDetails = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await api.get("/notes", {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const response = await api.get("/notes", 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       const foundNote = response.data.find((n) => n.id.toString() === id);
       if (foundNote) {
         foundNote.parsedContent = JSON.parse(foundNote.content).content; // Parse content
@@ -55,11 +57,13 @@ const NoteDetails = () => {
 
   const checkAdminRole = async () => {
     try {
-      const response = await api.get("/auth/user", {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }); // Adjust the endpoint as necessary to get user info
+      const response = await api.get("/auth/user", 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    ); // Adjust the endpoint as necessary to get user info
       const roles = response.data.roles;
       if (roles.includes("ROLE_ADMIN")) {
         setIsAdmin(true);
@@ -72,11 +76,13 @@ const NoteDetails = () => {
 
   const fetchAuditLogs = useCallback(async () => {
     try {
-      const response = await api.get(`/audit/note/${id}`, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const response = await api.get(`/audit/note/${id}`, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       setAuditLogs(response.data);
     } catch (err) {
       console.error("Error fetching audit logs", err);
@@ -140,11 +146,13 @@ const NoteDetails = () => {
     try {
       setNoteEditLoader(true);
       const noteData = { content: editorContent };
-      await api.put(`/notes/${id}`, noteData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.put(`/notes/${id}`, noteData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       toast.success("Note update successful");
       setEditEnable(false);
       fetchNoteDetails();

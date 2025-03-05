@@ -66,11 +66,13 @@ const UserProfile = () => {
 
     const fetch2FAStatus = async () => {
       try {
-        const response = await api.get(`/auth/user/2fa-status`, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        });
+        const response = await api.get(`/auth/user/2fa-status`,
+        //    {
+        //   headers: {
+        //     "Content-Type": "application/x-www-form-urlencoded",
+        //   },
+        // }
+      );
         setIs2faEnabled(response.data.is2faEnabled);
       } catch (error) {
         setPageError(error?.response?.data?.message);
@@ -86,11 +88,13 @@ const UserProfile = () => {
   const enable2FA = async () => {
     setDisbledLoader(true);
     try {
-      const response = await api.post(`/auth/enable-2fa`, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const response = await api.post(`/auth/enable-2fa`, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       setQrCodeUrl(response.data);
       setStep(2);
     } catch (error) {
@@ -105,11 +109,13 @@ const UserProfile = () => {
   const disable2FA = async () => {
     setDisbledLoader(true);
     try {
-      await api.post(`/auth/disable-2fa`, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.post(`/auth/disable-2fa`, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       setIs2faEnabled(false);
       setQrCodeUrl("");
     } catch (error) {
@@ -130,11 +136,13 @@ const UserProfile = () => {
       const formData = new URLSearchParams();
       formData.append("code", code);
 
-      await api.post(`/auth/verify-2fa`, formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.post(`/auth/verify-2fa`, formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       toast.success("2FA verified successful");
 
       setIs2faEnabled(true);
@@ -158,11 +166,13 @@ const UserProfile = () => {
       formData.append("token", token);
       formData.append("newUsername", newUsername);
       formData.append("newPassword", newPassword);
-      await api.post("/auth/update-credentials", formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.post("/auth/update-credentials", formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
 
       //fetchUser();
       toast.success("Update Credential successful");
@@ -212,11 +222,13 @@ const UserProfile = () => {
       formData.append("token", token);
       formData.append("expire", event.target.checked);
 
-      await api.put("/auth/update-expiry-status", formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.put("/auth/update-expiry-status", formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
 
       //fetchUser();
       toast.success("Update Account Expirey Status");
@@ -236,11 +248,13 @@ const UserProfile = () => {
       formData.append("token", token);
       formData.append("lock", event.target.checked);
 
-      await api.put("/auth/update-lock-status", formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.put("/auth/update-lock-status", formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
 
       //fetchUser();
       toast.success("Update Account Lock Status");
@@ -259,11 +273,13 @@ const UserProfile = () => {
       formData.append("token", token);
       formData.append("enabled", event.target.checked);
 
-      await api.put("/auth/update-enabled-status", formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.put("/auth/update-enabled-status", formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
 
       //fetchUser();
       toast.success("Update Account Enabled Status");
@@ -282,11 +298,13 @@ const UserProfile = () => {
       formData.append("token", token);
       formData.append("expire", event.target.checked);
 
-      await api.put("/auth/update-credentials-expiry-status", formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.put("/auth/update-credentials-expiry-status", formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
 
       //fetchUser();
       toast.success("Update Credentials Expiry Status");

@@ -37,11 +37,13 @@ const UserDetails = () => {
   const fetchUserDetails = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await api.get(`/admin/user/${userId}`, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const response = await api.get(`/admin/user/${userId}`,
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       setUser(response.data);
 
       setSelectedRole(response.data.role?.roleName || "");
@@ -63,11 +65,13 @@ const UserDetails = () => {
 
   const fetchRoles = useCallback(async () => {
     try {
-      const response = await api.get("/admin/roles", {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const response = await api.get("/admin/roles", 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       setRoles(response.data);
     } catch (err) {
       setError(err?.response?.data?.message);
@@ -93,11 +97,13 @@ const UserDetails = () => {
       formData.append("userId", userId);
       formData.append("roleName", selectedRole);
 
-      await api.put(`/admin/update-role`, formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.put(`/admin/update-role`, formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       fetchUserDetails();
       toast.success("Update role successful");
     } catch (err) {
@@ -118,11 +124,13 @@ const UserDetails = () => {
       formData.append("userId", userId);
       formData.append("password", newPassword);
 
-      await api.put(`/admin/update-password`, formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.put(`/admin/update-password`, formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       setIsEditingPassword(false);
       setValue("password", "");
       //fetchUserDetails();
@@ -154,11 +162,13 @@ const UserDetails = () => {
 
       formData.append(name, checked);
 
-      await api.put(updateUrl, formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.put(updateUrl, formData,
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       fetchUserDetails();
       toast.success(message);
     } catch (err) {

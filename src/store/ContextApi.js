@@ -30,11 +30,13 @@ export const ContextProvider = ({ children }) => {
 
     if (user?.username) {
       try {
-        const { data } = await api.get(`/auth/user`, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        });
+        const { data } = await api.get(`/auth/user`, 
+        //   {
+        //   headers: {
+        //     "Content-Type": "application/x-www-form-urlencoded",
+        //   },
+        // }
+      );
         const roles = data.roles;
 
         if (roles.includes("ROLE_ADMIN")) {

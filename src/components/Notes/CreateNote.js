@@ -25,11 +25,13 @@ const CreateNote = () => {
     try {
       setLoading(true);
       const noteData = { content: editorContent };
-      await api.post("/notes", noteData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.post("/notes", noteData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       toast.success("Note create successful");
       navigate("/notes");
     } catch (err) {

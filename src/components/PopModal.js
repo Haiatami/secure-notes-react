@@ -13,11 +13,13 @@ export default function Modals({ open, setOpen, noteId }) {
     try {
       setNoteDeleteLoader(true);
 
-      await api.delete(`/notes/${noteId}`, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.delete(`/notes/${noteId}`, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       toast.success("Note Delete successful");
       setOpen(false);
       navigate("/notes");

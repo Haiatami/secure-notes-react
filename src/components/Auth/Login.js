@@ -56,11 +56,13 @@ const Login = () => {
   const onLoginHandler = async (data) => {
     try {
       setLoading(true);
-      const response = await api.post("/auth/public/signin", data, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const response = await api.post("/auth/public/signin", data,
+      //    {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
 
       //showing success message with react hot toast
       toast.success("Login Successful");
@@ -100,11 +102,13 @@ const Login = () => {
       formData.append("code", code);
       formData.append("jwtToken", jwtToken);
 
-      await api.post("/auth/public/verify-2fa-login", formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.post("/auth/public/verify-2fa-login", formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
 
       const decodedToken = jwtDecode(jwtToken);
       handleSuccessfulLogin(jwtToken, decodedToken);

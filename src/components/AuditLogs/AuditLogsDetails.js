@@ -19,11 +19,13 @@ const AuditLogsDetails = () => {
   const fetchSingleAuditLogs = useCallback(async () => {
     setLoading(true);
     try {
-      const { data } = await api.get(`/audit/note/${noteId}`, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      const { data } = await api.get(`/audit/note/${noteId}`,
+      //    {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
 
       setAuditLogs(data);
     } catch (err) {

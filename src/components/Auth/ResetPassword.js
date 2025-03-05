@@ -34,11 +34,13 @@ const ResetPassword = () => {
 
       formData.append("token", token);
       formData.append("newPassword", password);
-      await api.post("/auth/public/reset-password", formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await api.post("/auth/public/reset-password", formData, 
+      //   {
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // }
+    );
       toast.success("Password reset successful! You can now log in.");
       reset();
     } catch (error) {
