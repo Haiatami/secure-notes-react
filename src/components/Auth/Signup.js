@@ -50,7 +50,11 @@ const Signup = () => {
 
     try {
       setLoading(true);
-      const response = await api.post("/auth/public/signup", sendData);
+      const response = await api.post("/auth/public/signup", sendData, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
       toast.success("Reagister Successful");
       reset();
       if (response.data) {

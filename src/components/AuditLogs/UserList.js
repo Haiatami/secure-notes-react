@@ -116,7 +116,11 @@ const UserList = () => {
     setLoading(true);
     const fetchUsers = async () => {
       try {
-        const response = await api.get("/admin/getusers");
+        const response = await api.get("/admin/getusers", {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
         const usersData = Array.isArray(response.data) ? response.data : [];
         setUsers(usersData);
       } catch (err) {

@@ -56,7 +56,11 @@ const Login = () => {
   const onLoginHandler = async (data) => {
     try {
       setLoading(true);
-      const response = await api.post("/auth/public/signin", data);
+      const response = await api.post("/auth/public/signin", data, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
 
       //showing success message with react hot toast
       toast.success("Login Successful");

@@ -14,7 +14,11 @@ const AllNotes = () => {
   const fetchNotes = async () => {
     setLoading(true);
     try {
-      const response = await api.get("/notes");
+      const response = await api.get("/notes", {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
 
       const parsedNotes = response.data.map((note) => ({
         ...note,

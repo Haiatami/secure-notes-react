@@ -66,7 +66,11 @@ const UserProfile = () => {
 
     const fetch2FAStatus = async () => {
       try {
-        const response = await api.get(`/auth/user/2fa-status`);
+        const response = await api.get(`/auth/user/2fa-status`, {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
         setIs2faEnabled(response.data.is2faEnabled);
       } catch (error) {
         setPageError(error?.response?.data?.message);
@@ -82,7 +86,11 @@ const UserProfile = () => {
   const enable2FA = async () => {
     setDisbledLoader(true);
     try {
-      const response = await api.post(`/auth/enable-2fa`);
+      const response = await api.post(`/auth/enable-2fa`, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
       setQrCodeUrl(response.data);
       setStep(2);
     } catch (error) {
@@ -97,7 +105,11 @@ const UserProfile = () => {
   const disable2FA = async () => {
     setDisbledLoader(true);
     try {
-      await api.post(`/auth/disable-2fa`);
+      await api.post(`/auth/disable-2fa`, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
       setIs2faEnabled(false);
       setQrCodeUrl("");
     } catch (error) {

@@ -37,7 +37,11 @@ const UserDetails = () => {
   const fetchUserDetails = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await api.get(`/admin/user/${userId}`);
+      const response = await api.get(`/admin/user/${userId}`, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
       setUser(response.data);
 
       setSelectedRole(response.data.role?.roleName || "");
@@ -59,7 +63,11 @@ const UserDetails = () => {
 
   const fetchRoles = useCallback(async () => {
     try {
-      const response = await api.get("/admin/roles");
+      const response = await api.get("/admin/roles", {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
       setRoles(response.data);
     } catch (err) {
       setError(err?.response?.data?.message);

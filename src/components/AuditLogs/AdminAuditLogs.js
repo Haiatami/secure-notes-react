@@ -126,7 +126,11 @@ const AdminAuditLogs = () => {
   const fetchAuditLogs = async () => {
     setLoading(true);
     try {
-      const response = await api.get("/audit");
+      const response = await api.get("/audit", {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
       setAuditLogs(response.data);
     } catch (err) {
       setError(err?.response?.data?.message);
